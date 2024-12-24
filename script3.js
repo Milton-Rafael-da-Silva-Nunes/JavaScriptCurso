@@ -1,7 +1,7 @@
-var peso;
-var altura;
-var icm;
-var resultado;
+let peso;
+let altura;
+let icm;
+let resultado;
 
 function calcularImc(event) {
     event.preventDefault(); // mantem os valores na caixa que o usuario digitou.
