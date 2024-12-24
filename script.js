@@ -9,9 +9,18 @@ function atualizarListaTarefas() {
 
     listTarefas.map((todo) => {
         let liElement = document.createElement("li");
-        let tarefaText = document.createTextNode(todo); // Variavel recebe o que é digitado pelo usuario.
+        let textoTarefa = document.createTextNode(todo); // Variavel recebe o que é digitado pelo usuario.
 
-        liElement.appendChild(tarefaText); // add o texto dentro da LI
+        let botaoExcluir = document.createElement("a"); // Criando ancora (botão excluir)
+        botaoExcluir.setAttribute("href", "#");
+
+        let textoBotaoExcluir = document.createTextNode("Excluir");
+        botaoExcluir.appendChild(textoBotaoExcluir);
+
+        botaoExcluir.setAttribute("onclick", "deletarTarefa()"); // Seto o evendo do botão e chamo a função
+
+        liElement.appendChild(textoTarefa); // add o texto dentro da LI
+        liElement.appendChild(botaoExcluir); // add botão excluir
         listElement.appendChild(liElement); // adiciono a LI na UL do index.html
     })
 }
@@ -30,3 +39,7 @@ function addTarefasNaLista() {
 }
 
 buttonElement.onclick = addTarefasNaLista;
+
+function deletarTarefa() {
+    alert("Teste deletar");
+}
