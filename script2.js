@@ -3,29 +3,45 @@ function pedido() {
 
     switch (Number(numeroPedido)) {
         case 1:
-            alert("Você escolher 'Suco', agora, escolha o sabor:");
             saborSuco();
             break;
 
         case 2:
-            alert("Você escolher 'Agua mineral'");
-            atualizarResumo("Agua mineral");
+            tipoAgua();
             break;
 
         case 3:
-            alert("Você escolher 'Sorvete', agora, escolha o sabor:");
             saborSorvete();
             break;
 
         case 4:
-            alert("O garçom esta a caminho!");
-            atualizarResumoPedido("Chamou o graçom");
+            atualizarResumo("Chamando o Garçom");
             break;
 
         default:
             alert("Por favor, escolha um pedido entre 1 e 4");
+            pedido();
             break;
     }
+}
+
+function tipoAgua() {
+    const aguaTipo = prompt("1 - Gelada\n2 - Mineral");
+
+    let tipo;
+    switch (Number(aguaTipo)) {
+        case 1:
+            tipo = "Gelada";
+            break;
+        case 2:
+            tipo = "Mineral";
+            break;
+        default:
+            alert("Por favor, escolha como você deseja a agua!");
+            tipoAgua();
+            return;
+    }
+    atualizarResumo(`Agua ${tipo}`);
 }
 
 function saborSuco() {
@@ -49,7 +65,8 @@ function saborSuco() {
             sabor = prompt("Digite o sabor do Suco:");
             break;
         default:
-            alert("Escolha inválida. Tente novamente.");
+            alert("Por favor, escolha um sabor entre nossas opções!");
+            saborSuco();
             return;
     }
     atualizarResumo(`Suco de ${sabor}`);
@@ -73,7 +90,8 @@ function saborSorvete() {
             sabor = prompt("Digite o sabor do Sorvete:");
             break;
         default:
-            alert("Escolha inválida. Tente novamente.");
+            alert("Por favor, escolha um sabor entre nossas opções!");
+            saborSorvete();
             return;
     }
     atualizarResumo(`Sorvete de ${sabor}`);
@@ -81,7 +99,7 @@ function saborSorvete() {
 
 function atualizarResumo(resumo) {
     const elementoResumo = document.querySelector("#resumo-pedido"); //Atualiza meu h3 da minha tela inicial
-    if(elementoResumo) {
+    if (elementoResumo) {
         elementoResumo.innerHTML = resumo;
     } else {
         console.error("Elemento 'resumo-pedido' não encontrado.");
