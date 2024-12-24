@@ -1,11 +1,11 @@
 // Objetos
 
-// let pessoa = {nome: "Rafael Nunes", idade: 28, altura: 1.71, cargo: "DBA"};
+let pessoa = {nome: "Rafael Nunes", idade: 28, altura: 1.71, cargo: "DBA"};
 
-// let carro = {nome: "Golf 1.6", cor: "Branco", ano: "2013"};
+let carro = {nome: "Golf 1.6", cor: "Branco", ano: "2013"};
 
-// console.log(pessoa);
-// console.log(carro);
+console.log(pessoa);
+console.log(carro);
 
 let usuarios = [
     {nome: "Rafael", cargo: "DBA", status: "Ativo"},
