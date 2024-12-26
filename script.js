@@ -2,7 +2,33 @@ let listElement = document.querySelector("#app ul");
 let inputElement = document.querySelector("#app input");
 let buttonElement = document.querySelector("#app button");
 
-let listTarefas = [];
+let listTarefas = JSON.parse(localStorage.getItem("@listaTarefas")) || []; // Adiciono na minha listao que foi salvo no localStora e, pego o texto dele e converto em lista novamente.
+
+atualizarListaTarefas(); // chamo ele no comço da aplicação para ele lista na tela o que tem salvo na Lista.
+
+function addTarefasNaLista() {
+    if (inputElement.value == '') {
+        alert("Digite uma tarefa para adicionar!");
+        return false;
+    } else {
+        let novaTarefa = inputElement.value;
+
+        listTarefas.push(novaTarefa);
+        inputElement.value = '';
+        atualizarListaTarefas();
+        salvarDados();
+    }
+}
+
+function deletarTarefa(posicao) {
+    listTarefas.splice(posicao, 1); // Esse "1" informa a função 'splice' que ele quer deletar a primeira coisa que ele achar da posição que passei
+    atualizarListaTarefas();
+    salvarDados();
+}
+
+function salvarDados() {
+    localStorage.setItem("@listaTarefas", JSON.stringify(listTarefas)); // No localStorage não aceita uma lista direta, então, converte para string usando o JSON.stringFy
+}
 
 function atualizarListaTarefas() {
     listElement.innerHTML = ''; // Limpo a lista antes de mostrar ela preenchida.
@@ -27,22 +53,4 @@ function atualizarListaTarefas() {
     })
 }
 
-function addTarefasNaLista() {
-    if (inputElement.value == '') {
-        alert("Digite uma tarefa para adicionar!");
-        return false;
-    } else {
-        let novaTarefa = inputElement.value;
-
-        listTarefas.push(novaTarefa);
-        inputElement.value = '';
-        atualizarListaTarefas();
-    }
-}
-
 buttonElement.onclick = addTarefasNaLista;
-
-function deletarTarefa(posicao) {
-    listTarefas.splice(posicao, 1); // Esse "1" informa a função 'splice' que ele quer deletar a primeira coisa que ele achar da posição que passei
-    atualizarListaTarefas();
-}
