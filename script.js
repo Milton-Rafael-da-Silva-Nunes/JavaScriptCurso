@@ -17,7 +17,9 @@ function atualizarListaTarefas() {
         let textoBotaoExcluir = document.createTextNode("Excluir");
         botaoExcluir.appendChild(textoBotaoExcluir);
 
-        botaoExcluir.setAttribute("onclick", "deletarTarefa()"); // Seto o evendo do botão e chamo a função
+        let posicaoObj = listTarefas.indexOf(todo); // variavel para pegar a posição do array e passar como parametro para função de deletar.
+
+        botaoExcluir.setAttribute("onclick", `deletarTarefa(${posicaoObj})`); // Seto o evendo do botão e chamo a função
 
         liElement.appendChild(textoTarefa); // add o texto dentro da LI
         liElement.appendChild(botaoExcluir); // add botão excluir
@@ -40,6 +42,7 @@ function addTarefasNaLista() {
 
 buttonElement.onclick = addTarefasNaLista;
 
-function deletarTarefa() {
-    alert("Teste deletar");
+function deletarTarefa(posicao) {
+    listTarefas.splice(posicao, 1); // Esse "1" informa a função 'splice' que ele quer deletar a primeira coisa que ele achar da posição que passei
+    atualizarListaTarefas();
 }
