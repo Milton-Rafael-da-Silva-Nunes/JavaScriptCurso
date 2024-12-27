@@ -1,21 +1,17 @@
-// MAP = percorer todo ARRAY
-let lista = ["Luana", "Rafael", "Maria", "Jose"];
+// Usando Find
+let listagem = [5, 3, "Rafael", 2, "Rafael", "Jose"];
 
-lista.map((value, index) => { // O 'value' é o valor da LISTA - o 'index' é a posição do item da lista
-    console.log("Nome: " + value + " - Na pisição: " + index);
+let busca = listagem.find((item) => { // FIND ele pega o 1º da minha lista conforme minha busca (se eu tiver 2 RAFAEL) ele tras o primeiro que achar
+    return item === "Rafael";
 });
 
-// Reduce = Ele reduz o ARRAY
-let numeros = [5, 3, 2, 10];
+console.log(busca);
 
-let total = numeros.reduce((acumulador, numero, indice, original) => {
-    console.log(`${acumulador} - total até o momento.`);
-    console.log(`${numero} - numero atual.`);
-    console.log(`${indice} - posição atual`); // Não obrigatorio
-    console.log(`${original} - array original`); // Não obrigatorio
-    console.log("----------------------------------------")
+// Usando o FILTER
+let palavras = ["Milton Nunes", "Rafael", "Jose", "Mara", "Julia", "Ricardo Silva", "Rafael"];
 
-    return acumulador += numero;
+let encontrados = palavras.filter((value, index, array) => { // FILTER retorna tudo com base no meu filtro.
+    return value === "Rafael";
 });
 
-console.log(`Total do REDUCE: ${total}`);
+console.log(encontrados);
