@@ -1,50 +1,27 @@
-// --------------------------------------------
-// Trabalhando com Spread Operador ------------
-// --------------------------------------------
+// REST Operator.
 
-// Array
-let primeiros = [1, 2, 3];
-let numeros1 = [primeiros, 4, 5, 10]; // Forma incorreta, vai ficar array dentro de array.
-let numeros2 = [...primeiros, 4, 5, 10]; // Forma correta. Os '...' informa o Spread Operador que adiciona o array os dados de outro array.
-
-console.log(numeros1);
-console.log(numeros2);
-
-// Objeto
-let pessoa = {
-    nome: "Rafael",
-    idade: 28,
-    profissao: "DBA"
-};
-
-let novaPessoa1 = {
-    pessoa,
-    nome: "Henrique Juliano",
-    cidade: "Belem",
-    estado: "PA",
-    status: "ATIVO"
-};
-
-let dadosPessoa = {
-    ...pessoa,
-    cidade: "Belem",
-    estado: "PA",
-    status: "ATIVO"
-}; // Dados desse segundo Array vai completar o primeiro, caso tenha os mesmos atributos ele vai sobrescreve-los.
-
-console.log(novaPessoa1);
-console.log(dadosPessoa);
-
-// Função
-function cadastrarUsuario(info) {
-    dados = {
-        ...info,
-        status: "ativo",
-        cadastro: "27/12/2024",
-        id: "10"
-    };
-
-    console.log(dados);
+// Forma que NÂO usa o REST Operator.
+function convidados1(nomes1, nomes2, nomes3, nomes4) {  // Dessa forma eu tenho que criar cada atributo e ela ficará statica em apenas 4 CONVIDADOS.
+    const msg = "SEJAM BEM VINDOS!\n";
+    console.log(msg + nomes1 + "," + nomes2 + "," + nomes3 + "," + nomes4);
 }
 
-cadastrarUsuario({nome: "Rafael", sobrenome: "Nunes", cidade: "Aurorado Pará - PA"}); // Passo os dados do usuario para a função e complemento ela com os demais dados dentro dela.
+console.log("\n");
+
+// Forma que USA o REST Operator.
+function convidados2(...convidados) { // Dessa forma ela fica flexivel e pode ter varios CONVIDADOS.
+    const msg = "SEJAM BEM VINDOS!\n";
+    console.log(msg + convidados);
+}
+
+convidados1("Rafael", "José", "Maria", "João");
+convidados2("Rafael", "José", "Maria", "João", "Milton");
+
+// usando REST Operator em um Programa de sortear numeros.
+
+function sortearNumero(...numeros) {
+    let numeroEscolhido = Math.floor(Math.random() * numeros.length); //  Math.floor Pega somente os inteiros - Math.random() numero aleatorio da minha lista
+    console.log("Numero escolhido foi: " + numeros[numeroEscolhido]);
+}
+
+sortearNumero(1, 5, 4, 6, 8, 7, 905, 65, 265, 101, 99, 346, 33);
