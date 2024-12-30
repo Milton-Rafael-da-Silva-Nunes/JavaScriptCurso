@@ -1,34 +1,24 @@
-// Funções Anonimas
+// Includes // 
+// INCLUDES é case sensitive e retorna um BOOLEAN.
+let nomes = ["Rafael", "Daniel", "Joao", "Maria", "Jose"];
 
-/*
-"() => {}"
+let parametro = "Gazin";
 
-1- PARAMETROS = é onde a função recebe os parametros (assim como na funções tradicionais).
-2 - SETA = reponsavel pelo nome "arrow".
-3 - CHAVES = bloco de codigo que representa o corpo da função.
-
-*/
-
-// Função normal
-function resultado1(a, b) {
-    let total = a - b;
-    return total;
+if (nomes.includes(parametro)) {
+    console.log("SUCESSO!\nNome está na lista.")
+} else {
+    console.log("NEGATIVO!\nNome não está na lista");
 }
 
-console.log(resultado1(10, 5));
+// StartsWith //
+// STARTSWITH é case sensitive e retorna um BOOLEAN, ele verifica se no INICIO do nome contem os dados que eu filtrei.
+let nome1 = "Rafael";
 
-// Função anonima Simples
-let resultado2 = ((a, b) => {
-    let total = a - b;
-    return total;
-}) 
+console.log(nome1.startsWith("Raf"));
 
-console.log(resultado2(10, 5));
+// EndsWith //
+// ENDSWITH é case sensitive e retorna um BOOLEAN, ele verifica se no FINAL do nome contem os dados que eu filtrei.
+let nome2 = "Jose";
 
-// Função anonima pratica
-let numeros = [1, 5, 6, 9, 15];
-
-numeros.map((item) => {
-    console.log(item);
-})
+console.log(nome2.endsWith("se"));
 
